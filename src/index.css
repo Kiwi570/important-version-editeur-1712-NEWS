@@ -1,0 +1,713 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════
+   🫧 BULLE EDITOR V2.0 - STYLES GLOBAUX
+   ═══════════════════════════════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🎨 VARIABLES CSS DYNAMIQUES (Thèmes)
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Couleurs de base - Thème Aurora (défaut) */
+  --color-bg: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-surface: #1a1a2e;
+  --color-surface-hover: #252542;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+  
+  /* Texte */
+  --color-text: #FFFFFF;
+  --color-text-secondary: #E5E7EB;
+  --color-text-muted: #9CA3AF;
+  --color-text-light: #6B7280;
+  
+  /* Accents */
+  --color-primary: #A78BFA;
+  --color-secondary: #F472B6;
+  --color-tertiary: #22D3EE;
+  --color-accent-pink: #F472B6;
+  --color-accent-cyan: #22D3EE;
+  --color-accent-emerald: #34D399;
+  --color-accent-amber: #FBBF24;
+  --color-accent-orange: #FB923C;
+  --color-accent-red: #EF4444;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #A78BFA 0%, #F472B6 50%, #22D3EE 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #C4B5FD 0%, #F9A8D4 50%, #67E8F9 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(167, 139, 250, 0.2) 0%, rgba(244, 114, 182, 0.15) 100%);
+  
+  /* Shadows */
+  --shadow-glow: 0 0 20px rgba(167, 139, 250, 0.3);
+  --shadow-glow-strong: 0 0 40px rgba(167, 139, 250, 0.5);
+  --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.3);
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🌌 THÈME: AURORA (Défaut)
+   ═══════════════════════════════════════════════════════════════════ */
+
+[data-theme="aurora"] {
+  --color-bg: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-surface: #1a1a2e;
+  --color-text: #FFFFFF;
+  --color-text-muted: #9CA3AF;
+  --color-primary: #A78BFA;
+  --color-secondary: #F472B6;
+  --color-tertiary: #22D3EE;
+  --gradient-primary: linear-gradient(135deg, #A78BFA 0%, #F472B6 50%, #22D3EE 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🏢 THÈME: CORPORATE
+   ═══════════════════════════════════════════════════════════════════ */
+
+[data-theme="corporate"] {
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-surface: #334155;
+  --color-surface-hover: #475569;
+  --color-border: rgba(148, 163, 184, 0.2);
+  --color-text: #F8FAFC;
+  --color-text-secondary: #E2E8F0;
+  --color-text-muted: #94A3B8;
+  --color-text-light: #64748B;
+  --color-primary: #3B82F6;
+  --color-secondary: #06B6D4;
+  --color-tertiary: #8B5CF6;
+  --gradient-primary: linear-gradient(135deg, #1E3A5F 0%, #3B82F6 50%, #06B6D4 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 182, 212, 0.15) 100%);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🌸 THÈME: PASTEL
+   ═══════════════════════════════════════════════════════════════════ */
+
+[data-theme="pastel"] {
+  --color-bg: #FDF2F8;
+  --color-bg-secondary: #FCE7F3;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #FDF2F8;
+  --color-border: rgba(236, 72, 153, 0.2);
+  --color-text: #1F2937;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6B7280;
+  --color-text-light: #9CA3AF;
+  --color-primary: #EC4899;
+  --color-secondary: #A78BFA;
+  --color-tertiary: #34D399;
+  --gradient-primary: linear-gradient(135deg, #FBCFE8 0%, #DDD6FE 50%, #A7F3D0 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+  --shadow-glow: 0 0 20px rgba(236, 72, 153, 0.2);
+  --shadow-card: 0 10px 40px rgba(236, 72, 153, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ⚡ THÈME: NEON
+   ═══════════════════════════════════════════════════════════════════ */
+
+[data-theme="neon"] {
+  --color-bg: #030712;
+  --color-bg-secondary: #0a0a0f;
+  --color-surface: #111827;
+  --color-surface-hover: #1F2937;
+  --color-border: rgba(34, 197, 94, 0.3);
+  --color-text: #F0FDF4;
+  --color-text-secondary: #DCFCE7;
+  --color-text-muted: #86EFAC;
+  --color-text-light: #4ADE80;
+  --color-primary: #22C55E;
+  --color-secondary: #F43F5E;
+  --color-tertiary: #FACC15;
+  --gradient-primary: linear-gradient(135deg, #22C55E 0%, #F43F5E 50%, #FACC15 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(244, 63, 94, 0.15) 100%);
+  --shadow-glow: 0 0 30px rgba(34, 197, 94, 0.5);
+  --shadow-glow-strong: 0 0 60px rgba(34, 197, 94, 0.7);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🪨 THÈME: MINIMAL
+   ═══════════════════════════════════════════════════════════════════ */
+
+[data-theme="minimal"] {
+  --color-bg: #FFFFFF;
+  --color-bg-secondary: #F9FAFB;
+  --color-surface: #F3F4F6;
+  --color-surface-hover: #E5E7EB;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-text: #111827;
+  --color-text-secondary: #1F2937;
+  --color-text-muted: #6B7280;
+  --color-text-light: #9CA3AF;
+  --color-primary: #111827;
+  --color-secondary: #4B5563;
+  --color-tertiary: #6B7280;
+  --gradient-primary: linear-gradient(135deg, #111827 0%, #374151 50%, #6B7280 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(17, 24, 39, 0.05) 0%, rgba(75, 85, 99, 0.05) 100%);
+  --shadow-glow: 0 0 20px rgba(0, 0, 0, 0.1);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📝 STYLES DE BASE
+   ═══════════════════════════════════════════════════════════════════ */
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🎬 ANIMATIONS - KEYFRAMES
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Animation de flottement pour les bulles */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(-1deg);
+  }
+}
+
+/* Animation de flottement alternative */
+@keyframes float-alt {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-8px) translateX(5px);
+  }
+  66% {
+    transform: translateY(-12px) translateX(-3px);
+  }
+}
+
+/* Animation de pulsation lumineuse */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(167, 139, 250, 0.6);
+    opacity: 0.8;
+  }
+}
+
+/* Animation de gradient qui se déplace */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation de gradient horizontal (pour le texte) */
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animation de brillance qui traverse */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Animation de rebond doux */
+@keyframes bounce-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Animation de rotation douce */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animation de scale pulsé */
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Animation d'apparition */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation de disparition */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Animation de typing dots */
+@keyframes typing-dot {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* Animation sparkle */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+/* Animation de morphing blob */
+@keyframes blob {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+  }
+  75% {
+    border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🎯 CLASSES D'ANIMATION
+   ═══════════════════════════════════════════════════════════════════ */
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-alt {
+  animation: float-alt 8s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 10s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  animation: gradient-shift 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 2s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-blob {
+  animation: blob 8s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✨ TEXTE GRADIENT ANIMÉ
+   ═══════════════════════════════════════════════════════════════════ */
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-animated {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 25%,
+    var(--color-tertiary) 50%,
+    var(--color-secondary) 75%,
+    var(--color-primary) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-x 4s linear infinite;
+}
+
+.text-gradient-hover {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  transition: background-position 0.3s ease;
+}
+
+.text-gradient-hover:hover {
+  background-position: right center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🔲 BORDURES ET SURFACES
+   ═══════════════════════════════════════════════════════════════════ */
+
+.border-gradient {
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    var(--gradient-primary) border-box;
+}
+
+.bg-surface {
+  background: var(--color-surface);
+}
+
+.bg-surface-hover:hover {
+  background: var(--color-surface-hover);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   💎 GLASSMORPHISM
+   ═══════════════════════════════════════════════════════════════════ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-dark {
+  background: rgba(18, 18, 26, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+}
+
+.glass-colored {
+  background: rgba(167, 139, 250, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🔘 BOUTONS
+   ═══════════════════════════════════════════════════════════════════ */
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 15px rgba(167, 139, 250, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(167, 139, 250, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text);
+  padding: 12px 24px;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  border: 2px solid var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  background: rgba(167, 139, 250, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-ghost:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📜 SCROLLBAR PERSONNALISÉE
+   ═══════════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gradient-primary-hover);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✏️ PLACEHOLDER & SELECTION
+   ═══════════════════════════════════════════════════════════════════ */
+
+::placeholder {
+  color: var(--color-text-light);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: var(--color-text-light);
+}
+
+::-ms-input-placeholder {
+  color: var(--color-text-light);
+}
+
+::selection {
+  background: rgba(167, 139, 250, 0.3);
+  color: var(--color-text);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🎯 FOCUS STYLES
+   ═══════════════════════════════════════════════════════════════════ */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🧩 UTILITAIRES
+   ═══════════════════════════════════════════════════════════════════ */
+
+.transition-smooth {
+  transition: all var(--transition-normal);
+}
+
+.transition-fast {
+  transition: all var(--transition-fast);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-glow-strong {
+  box-shadow: var(--shadow-glow-strong);
+}
+
+/* Délais d'animation */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* Durées d'animation */
+.duration-slow { animation-duration: 8s; }
+.duration-normal { animation-duration: 4s; }
+.duration-fast { animation-duration: 2s; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   🫧 ÉLÉMENTS SPÉCIAUX BULLE
+   ═══════════════════════════════════════════════════════════════════ */
+
+.bulle-glow {
+  position: relative;
+}
+
+.bulle-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: var(--gradient-primary);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.bulle-glow:hover::before {
+  opacity: 1;
+  filter: blur(8px);
+}
+
+.bulle-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.bulle-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📱 RESPONSIVE HELPERS
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  :root {
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
